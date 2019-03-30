@@ -69,6 +69,3 @@ group :development do
 end
 
 gem 'mongoid', '~> 7.0.1'
-gem 'devise', '~> 4.5.0'
-gem 'rolify', '~> 5.2.0'
-gem 'pundit', '~> 2.0.1'
