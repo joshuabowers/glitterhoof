@@ -2,7 +2,7 @@
 *Display your Crusader Kings II Dynasty Chronicle with Style!*
 
 ## Premise
-Ever finish an epic hundred-hour long campaign of CK2 and want a record of the trials and travails of your dynasty? You ask the game to export a copy of your family chronicle only to find its a boring text file. What if you could make it a bit more fancy, and also get some stat crunching on the events that shaped your clan and history itself? Enter Glitterhoof: the app for giving that dusty old chronicle some much needed pizazz.
+Ever finish an epic hundred-hour long campaign of CK2 and want a record of the trials and travails of your dynasty? You ask the game to export a copy of your family chronicle only to find it's a boring text file. What if you could make it a bit more fancy, and also get some stat crunching on the events that shaped your clan and history itself? Enter Glitterhoof: the app for giving that dusty old chronicle some much needed pizazz.
 
 ## Features
 * No user accounts: no need to sign up, log in, sign out, etc.
