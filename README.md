@@ -20,6 +20,18 @@ Ever finish an epic hundred-hour long campaign of CK2 and want a record of the t
 * Stained glass effect can be achieved using trianglify (a JS library) to generate a colorized triangular tessellation. Text in black layered on top of this would complete the effect.
 * Event categories could be represented by an icon embedded in the event's stained glass. Flaticon seems to have numerous free/by icon packs which have a medieval style.
 
+## App structure
+* access:
+    * frontend endpoint managed by React
+    * /api/chronicles: index/show; json only.
+    * ActionCable: ChronicleCable, for handling upload, post-upload processing, and sending status updates back to the frontend.
+
+## Upload / Processing Messages
+* Upload phase: "We've dispatched squires to carry copies of your manuscript to our scribes."; coupled with percentage completion.
+* Processing:
+    * Determining number of events.
+    * Reticulating splines.
+
 ## Chronicle File Structure
 CK2 exports the chronicle as a plaintext file with the following structure:
 * The beginning of a near year is on a new line, denoted by hyphens:
