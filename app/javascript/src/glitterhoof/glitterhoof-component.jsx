@@ -11,7 +11,7 @@ const GlitterhoofComponent = () => (
     <Router>
       <>
         <Route exact path='/' component={ Welcome } />
-        <Route path='/chronicles' component={ Chronicles } />
+        <Route exact path='/chronicles' component={ Chronicles } />
         <Route path='/chronicles/:id' component={ Chronicle } />
       </>
     </Router>

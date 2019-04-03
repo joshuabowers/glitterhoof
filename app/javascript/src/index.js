@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <Provider store={ store }>
       <Glitterhoof />
     </Provider>,
-    document.querySelector('body')
+    document.getElementById('root')
   );
 });

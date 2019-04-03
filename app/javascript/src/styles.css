@@ -8,8 +8,13 @@ html, body {
 }
 
 body {
-  background-color: hsl( 120, 50%, 50% );
+  background-color: hsl( 180, 25%, 50% );
   background-image: radial-gradient( at top, hsl( 0, 0%, 100% ), transparent );
 
+  background-attachment: fixed;
+
   font-family: 'UnifrakturCook', cursive;
+
+  font-size: 24px;
+  font-size: calc( 1vw + 1vh + .5vmin );
 }
