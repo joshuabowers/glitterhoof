@@ -9,7 +9,8 @@
         },
         "useBuiltIns": "usage",
         "forceAllTransforms": true,
-        "shippedProposals": true
+        "shippedProposals": true,
+        "corejs": 3
       }
     ],
     "@babel/preset-react"

@@ -10,4 +10,6 @@ html, body {
 body {
   background-color: hsl( 120, 50%, 50% );
   background-image: radial-gradient( at top, hsl( 0, 0%, 100% ), transparent );
+
+  font-family: 'UnifrakturCook', cursive;
 }
