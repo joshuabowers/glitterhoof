@@ -4,7 +4,7 @@ import horseIcon from './horse-standing-on-three-paws-black-shape-of-side-view.s
 
 const SiteHeaderComponent = (props) => (
   <header className={ styles.siteHeader }>
-    <img src={ horseIcon } />
+    <img src={ horseIcon } alt='Site logo'/>
     <h1>Glitterhoof</h1>
   </header>
 );
