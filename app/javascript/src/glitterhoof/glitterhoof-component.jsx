@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import SiteHeader from './site-header';
 import Welcome from './welcome';
 import Chronicles from './chronicles';
 import Chronicle from './chronicle';
@@ -8,6 +9,7 @@ import About from './about';
 
 const GlitterhoofComponent = () => (
   <>
+    <SiteHeader />
     <Router>
       <>
         <Route exact path='/' component={ Welcome } />
