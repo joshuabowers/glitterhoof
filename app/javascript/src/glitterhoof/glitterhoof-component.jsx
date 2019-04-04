@@ -7,6 +7,8 @@ import Chronicles from './chronicles';
 import Chronicle from './chronicle';
 import About from './about';
 
+import styles from './styles';
+
 const GlitterhoofComponent = () => (
   <>
     <SiteHeader />

@@ -1,0 +1,12 @@
+:global(#root) {
+  background-color: hsl( 180, 5%, 25% );
+  background-image: var(--lighting-gradient), url('./brick-wall.svg');
+  background-attachment: fixed, local;
+
+  padding: 0.5em;
+  margin: 1em;
+
+  border: 0.1em solid hsl( 180, 5%, 10% );
+  outline: 0.75em dashed hsl( 180, 5%, 25% );
+  outline-offset: 0;
+}

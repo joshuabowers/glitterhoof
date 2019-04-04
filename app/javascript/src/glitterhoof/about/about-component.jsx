@@ -7,8 +7,9 @@ const AboutComponent = (props) => (
     <nav>
       <p>Glitterhoof uses the following assets and resources:</p>
       <ul>
-        <li><a href='https://github.com/qrohlf/trianglify'>Trianglify</a></li>
-        <li><a href='https://fonts.google.com/specimen/UnifrakturCook'>UnifrakturCook</a></li>
+        <li>Window tessellations: <a href='https://github.com/qrohlf/trianglify'>Trianglify</a></li>
+        <li>Font: <a href='https://fonts.google.com/specimen/UnifrakturCook'>UnifrakturCook</a></li>
+        <li>Brick wall pattern from <a href='https://www.heropatterns.com/'>Hero Patterns</a></li>
         <li>
           Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a>&nbsp;
           from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>&nbsp;

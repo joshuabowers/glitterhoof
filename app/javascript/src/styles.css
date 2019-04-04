@@ -1,4 +1,5 @@
 :global(:root) {
+  --lighting-gradient: radial-gradient( at top, hsl( 0, 0%, 85% ), transparent );
 }
 
 html, body {
@@ -9,7 +10,7 @@ html, body {
 
 body {
   background-color: hsl( 180, 25%, 50% );
-  background-image: radial-gradient( at top, hsl( 0, 0%, 100% ), transparent );
+  background-image: var(--lighting-gradient);
 
   background-attachment: fixed;
 
