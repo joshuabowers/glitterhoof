@@ -1,6 +1,11 @@
 import React from 'react';
 
-const WelcomeComponent = (props) => (
+import FileInput from '../file-input';
+import MaterialButton from '../material-button';
+
+import styles from './styles';
+
+const WelcomeComponent = ({ chronicleFile, fileChanged, ...props }) => (
   <main>
     <p>
       Ever finish an epic hundred-hour long campaign of Crusader Kings 2 and
@@ -11,6 +16,17 @@ const WelcomeComponent = (props) => (
       Enter Glitterhoof: the app for giving that dusty old chronicle some much
       needed pizazz.
     </p>
+    <p>
+      Want to get started? If you have the Charlemagne DLC, export a chronicle
+      file from CK2, then upload it to us via the following form; we'll
+      process it and make it look nice.
+    </p>
+    <form className={ styles.uploadChronicle }>
+      <FileInput id='chronicleFile' label='Select chronicle file'
+                 value={ chronicleFile} onChange={ fileChanged } />
+      <MaterialButton icon='send' label='Dispatch squires'
+                      disabled={ chronicleFile.length === 0 } />
+    </form>
   </main>
 );
 

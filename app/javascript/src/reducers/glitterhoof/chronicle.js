@@ -2,6 +2,8 @@ import { createAction, createReducer } from 'redux-act';
 import { combineReducers } from 'redux';
 
 export const actions = {
+  changeFile: createAction('user selected chronicle file'),
+
   upload: createAction('initiates chronicle file upload'),
 
   uploadProgress: createAction('Chronicle file upload progress status'),
@@ -12,6 +14,11 @@ export const actions = {
   processSuccess: createAction(''),
   processFailure: createAction('')
 };
+
+const file = createReducer({
+  [actions.changeFile]: (state, name) => name,
+  [actions.uploadSuccess]: state => null
+}, null);
 
 const progress = createReducer({
   [actions.upload]: state => 0,
@@ -27,4 +34,4 @@ const error = createReducer({
   [actions.processSuccess]: state => null
 }, null);
 
-export default combineReducers({ progress, error });
+export default combineReducers({ file, progress, error });

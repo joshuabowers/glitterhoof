@@ -1,5 +1,6 @@
 :global(:root) {
   --lighting-gradient: radial-gradient( at top, hsl( 0, 0%, 85% ), transparent );
+  --parchment-color: beige;
 }
 
 html, body {
