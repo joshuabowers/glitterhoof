@@ -17,9 +17,15 @@ export function* createChronicle() {
   while( true ){
     try {
       const action = yield take( actions.upload ),
-            file = action.payload;
+            file = action.payload,
+            chunkSize = 1024;
       const fileContents = yield call( readAsText, file );
-      yield put( actions.uploadProgress( 0 ) );
+      for( let i = 0; i <= fileContents.length; i += chunkSize ) {
+        const chunk = fileContents.slice( i, i + chunkSize );
+        yield put( actions.transferChunk( chunk ) );
+        yield take( actions.transferSuccess );
+        yield put( actions.uploadProgress( i / fileContents.length ) );
+      }
     } catch( err ){
       yield put( actions.uploadFailure( err ) );
     }

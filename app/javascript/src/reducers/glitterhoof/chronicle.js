@@ -6,6 +6,9 @@ export const actions = {
 
   upload: createAction('initiates chronicle file upload'),
 
+  transferChunk: createAction('transfers a file chunk to the server'),
+  transferSuccess: createAction('file chunk transfer sucessful'),
+
   uploadProgress: createAction('Chronicle file upload progress status'),
   uploadSuccess: createAction('Upload of chronicle file has succeeded'),
   uploadFailure: createAction('Upload of chronicle file has failed'),
