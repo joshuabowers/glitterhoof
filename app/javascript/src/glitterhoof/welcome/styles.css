@@ -6,3 +6,18 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.createFlowIndicator {
+  font-size: 2em;
+  transition: all 300ms ease-in-out;
+  transform: rotateZ(90deg);
+  --translateDistance: 0.5em;
+}
+
+.createFlowIndicator.mustSelectFile {
+  transform: translateX(calc(0px - var(--translateDistance))) rotateZ(0deg);
+}
+
+.createFlowIndicator.readyToDispatch {
+  transform: translateX(var(--translateDistance)) rotateZ(180deg);
+}
