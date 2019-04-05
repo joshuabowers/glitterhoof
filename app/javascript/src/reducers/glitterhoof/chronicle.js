@@ -22,14 +22,14 @@ const file = createReducer({
 
 const progress = createReducer({
   [actions.upload]: state => 0,
-  [actions.uploadProgress]: (state, { percentComplete }) => percentComplete,
-  [actions.processProgress]: (state, { percentComplete }) => percentComplete,
+  [actions.uploadProgress]: (state, percentComplete) => percentComplete,
+  [actions.processProgress]: (state, percentComplete) => percentComplete,
   [actions.uploadSuccess]: state => 100
 }, null);
 
 const error = createReducer({
-  [actions.uploadFailure]: (state, { error }) => error,
-  [actions.processFailure]: (state, { error }) => error,
+  [actions.uploadFailure]: (state, error) => error,
+  [actions.processFailure]: (state, error) => error,
   [actions.uploadSuccess]: state => null,
   [actions.processSuccess]: state => null
 }, null);

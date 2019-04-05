@@ -5,7 +5,8 @@ import MaterialButton from '../material-button';
 
 import styles from './styles';
 
-const WelcomeComponent = ({ chronicleFile, fileChanged, ...props }) => {
+const WelcomeComponent = ({ chronicleFile, fileChanged,
+                            dispatchSquires, ...props }) => {
   const classes = [
     'material-icons',
     styles.createFlowIndicator,
@@ -29,10 +30,11 @@ const WelcomeComponent = ({ chronicleFile, fileChanged, ...props }) => {
       </p>
       <form className={ styles.uploadChronicle }>
         <FileInput id='chronicleFile' label='Select chronicle file'
-                   value={ chronicleFile} onChange={ fileChanged } />
+                   value={ chronicleFile } onChange={ fileChanged } />
         <span className={ classes }>arrow_back</span>
         <MaterialButton icon='send' label='Dispatch squires'
-                        disabled={ chronicleFile.length === 0 } />
+                        disabled={ chronicleFile.length === 0 }
+                        onClick={ dispatchSquires } />
       </form>
     </main>
   );

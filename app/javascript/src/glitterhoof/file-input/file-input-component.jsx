@@ -6,7 +6,7 @@ const FileInputComponent = ({ id, value, label, onChange, ...props }) => {
   return (
     <>
       <input type='file' id={ id } name={ id }
-             value={ value } onChange={ onChange }
+             onChange={ onChange }
              className={ styles.fileInput } />
       <label className={ styles.fileInputLabel } htmlFor={ id } >
         <span className='material-icons'>find_in_page</span>&nbsp;
