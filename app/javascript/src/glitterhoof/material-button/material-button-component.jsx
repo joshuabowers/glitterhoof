@@ -4,7 +4,7 @@ import styles from './styles';
 const MaterialButtonComponent = ({ icon, label, ...props }) => (
   <button className={ styles.materialButton } { ...props }>
     <span className='material-icons'>{ icon }</span>
-    { label }
+    { label && <>&nbsp;{ label }</> }
   </button>
 );
 

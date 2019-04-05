@@ -1,0 +1,33 @@
+.interactiveButton {
+  background-color: transparent;
+  border: 0.1em solid transparent;
+  cursor: pointer;
+
+  padding: 0.1em 0.25em;
+
+  transition: all 0.2s ease-in-out;
+
+  display: inline-flex;
+  align-items: center;
+
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.interactiveButton:hover:not(:disabled) {
+  transform: translateY( -0.1em );
+  border-color: gray;
+  box-shadow: var(--box-shadow);
+}
+
+.interactiveButton:active {
+  transform: translateY( 0.2em );
+  box-shadow: var(--box-shadow-inset);
+  background-color: rgba( 0,0,0, 0.7 );
+}
+
+.interactiveButton:disabled {
+  cursor: not-allowed;
+  color: gray;
+}

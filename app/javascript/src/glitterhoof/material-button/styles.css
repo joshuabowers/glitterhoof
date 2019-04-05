@@ -1,0 +1,3 @@
+.materialButton {
+  composes: interactiveButton from '../../utils/interactive-button';
+}
