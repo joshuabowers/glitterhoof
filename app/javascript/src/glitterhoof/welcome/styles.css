@@ -1,6 +1,4 @@
 .uploadChronicle {
-  background-color: var(--parchment-color);
-
   padding: 1.25em;
   display: flex;
   justify-content: space-around;

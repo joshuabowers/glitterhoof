@@ -1,14 +1,11 @@
 :global(#root) {
-  background-color: hsl( 180, 5%, 25% );
-  background-image: var(--lighting-gradient), url('./brick-wall.svg');
-  background-attachment: fixed, local;
-  background-position: center, 0.5em;
+  padding: 5.25rem;
+  margin: 1rem;
 
-  padding: 0.5em;
-  margin: 1em;
+  overflow-y: hidden;
+  overflow-x: auto;
 
-  border: 0.25em outset hsl( 180, 5%, 45% );
-  border-radius: 0.75em;
+  border-image: url('./parchment-scroll.png') 25% fill / 5rem;
 
-  box-shadow: 0 0 1em black;
+  filter: drop-shadow( var(--box-shadow) );
 }

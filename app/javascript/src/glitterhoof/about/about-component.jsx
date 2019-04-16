@@ -9,7 +9,6 @@ const AboutComponent = (props) => (
       <ul>
         <li>Window tessellations: <a href='https://github.com/qrohlf/trianglify'>Trianglify</a></li>
         <li>Font: <a href='https://fonts.google.com/specimen/UnifrakturCook'>UnifrakturCook</a></li>
-        <li>Brick wall pattern from <a href='https://www.heropatterns.com/'>Hero Patterns</a></li>
         <li>Select icons used in forms from the <a href='https://material.io/'>Material Icons</a> set</li>
         <li>
           All other icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a>&nbsp;
