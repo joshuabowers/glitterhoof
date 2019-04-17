@@ -2,6 +2,18 @@
   padding: 5.25rem;
   margin: 1rem;
 
+  position: relative;
+}
+
+:global(#root::before) {
+  content: '';
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  position: absolute;
+  
   border-image: url('./parchment-scroll.png') 25% fill / 5rem;
 
   filter: drop-shadow( var(--box-shadow) );
