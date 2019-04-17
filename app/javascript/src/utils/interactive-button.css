@@ -1,6 +1,7 @@
 .interactiveButton {
   background-color: transparent;
   border: 0.1em solid transparent;
+  border-radius: 0.25em;
   cursor: pointer;
 
   padding: 0.1em 0.25em;
@@ -16,7 +17,7 @@
 }
 
 .interactiveButton:hover:not(:disabled) {
-  transform: translateY( -0.1em );
+  transform: translateY( -0.1em ) scale(1.1, 1.1);
   box-shadow: var(--box-shadow);
 }
 
