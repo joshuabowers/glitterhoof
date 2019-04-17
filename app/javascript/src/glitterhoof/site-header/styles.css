@@ -3,16 +3,20 @@
   justify-content: center;
   align-items: center;
 
-  padding: 6em 6em 0em;
-  margin-top: -3.5em;
+  padding: 0.35em 0em 3.6em;
+  margin-top: -3em;
 
-  border-image: url('./logo-banner.png') 1020 1800 240 fill / 7em 9em 1em 9em;
+  width: 115%;
+  margin-left: -7.5%;
+  margin-bottom: -0.75em;
+
+  border-image: url('./logo-banner.png') 110 1350 500 1350 fill / 0.75em 9em 4em;
 
   filter: drop-shadow( var(--box-shadow) );
 }
 
 .siteHeader > img {
-  width: 4em;
+  width: 3em;
   filter: invert(1);
 }
 
