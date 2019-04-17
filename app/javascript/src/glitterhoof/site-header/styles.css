@@ -2,8 +2,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 6em 6em 0em;
+  margin-top: -3.75em;
+
+  border-image: url('./logo-banner.png') 1020 1800 240 fill / 7em 9em 1em 9em;
+
+  filter: drop-shadow( var(--box-shadow) );
 }
 
 .siteHeader > img {
   width: 4em;
+  filter: invert(1);
+}
+
+.siteHeader > h1 {
+  margin: 0;
+  padding: 0;
+  color: white;
 }

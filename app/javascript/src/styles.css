@@ -1,7 +1,7 @@
 :global(:root) {
   --lighting-gradient: radial-gradient( at top, hsl( 0, 0%, 85% ), transparent );
   --parchment-color: beige;
-  --box-shadow: 0 0.1em 0.2em rgba( 64,64,64, 0.5 );
+  --box-shadow: 0 0.1em 0.2em rgba( 32,32,32, 0.75 );
   --box-shadow-inset: inset 0 0 0.2em rgba( 0,0,0, 0.5 );
 }
 

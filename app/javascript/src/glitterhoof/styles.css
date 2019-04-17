@@ -2,9 +2,6 @@
   padding: 5.25rem;
   margin: 1rem;
 
-  overflow-y: hidden;
-  overflow-x: auto;
-
   border-image: url('./parchment-scroll.png') 25% fill / 5rem;
 
   filter: drop-shadow( var(--box-shadow) );
