@@ -21,4 +21,17 @@ body {
 
   font-size: 24px;
   font-size: calc( 1vw + 1vh + .5vmin );
+
+  height: 100%;
+  padding-top: 0.5em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: stretch;
+  align-items: stretch;
+}
+
+body, :global(#root) {
+  height: calc(100% - 1em);
 }

@@ -18,6 +18,7 @@ const GlitterhoofComponent = ({ isProcessingFile, ...props }) => (
       <Switch>
         <Route exact path='/' component={ Welcome } />
         <Route exact path='/chronicles' component={ Chronicles } />
+        <Route exact path='/about' component={ About } />
         <Route path='/chronicles/:id' component={ Chronicle } />
         {
           isProcessingFile &&
@@ -26,7 +27,6 @@ const GlitterhoofComponent = ({ isProcessingFile, ...props }) => (
         <Route component={ NotFound } />
       </Switch>
     </Router>
-    <About />
   </>
 );
 

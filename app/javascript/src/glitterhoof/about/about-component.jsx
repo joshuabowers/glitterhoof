@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './styles';
 
 const AboutComponent = (props) => (
-  <footer className={ styles.about }>
+  <main className={ styles.about }>
     <p>An app by Joshua Bowers, &copy; 2019.</p>
     <nav>
       <p>Glitterhoof uses the following assets and resources:</p>
@@ -18,7 +18,7 @@ const AboutComponent = (props) => (
         </li>
       </ul>
     </nav>
-  </footer>
+  </main>
 );
 
 export default AboutComponent;

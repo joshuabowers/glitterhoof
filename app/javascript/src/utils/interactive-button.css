@@ -17,7 +17,6 @@
 
 .interactiveButton:hover:not(:disabled) {
   transform: translateY( -0.1em );
-  border-color: gray;
   box-shadow: var(--box-shadow);
 }
 
