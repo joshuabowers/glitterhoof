@@ -1,18 +1,21 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 
 import FileInput from '../file-input';
 import MaterialButton from '../material-button';
 
 import styles from './styles';
 
-const WelcomeComponent = ({ chronicleFile, fileChanged,
+const WelcomeComponent = ({ chronicleFile, isProcessingFile, fileChanged,
                             dispatchSquires, ...props }) => {
   const classes = [
     'material-icons',
     styles.createFlowIndicator,
     chronicleFile === '' ? styles.mustSelectFile : styles.readyToDispatch
   ].join(' ');
-  return (
+  return isProcessingFile
+    ? ( <Redirect to='/status' /> )
+    : (
     <main>
       <p>
         Ever finish an epic hundred-hour long campaign of Crusader Kings 2 and

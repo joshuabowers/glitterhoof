@@ -23,6 +23,15 @@ const file = createReducer({
   [actions.uploadSuccess]: state => null
 }, null);
 
+const step = createReducer({
+  [actions.upload]: state => 'Upload',
+  [actions.processProgress]: state => 'Analyzing file',
+  [actions.uploadSuccess]: state => 'Upload success',
+  [actions.processSuccess]: state => 'Analysis complete',
+  [actions.uploadFailure]: state => 'Failure',
+  [actions.processFailure]: state => 'Failure'
+}, null);
+
 const progress = createReducer({
   [actions.upload]: state => 0,
   [actions.uploadProgress]: (state, percentComplete) => percentComplete,
@@ -37,4 +46,4 @@ const error = createReducer({
   [actions.processSuccess]: state => null
 }, null);
 
-export default combineReducers({ file, progress, error });
+export default combineReducers({ file, step, progress, error });

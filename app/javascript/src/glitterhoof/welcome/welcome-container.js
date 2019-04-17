@@ -4,7 +4,8 @@ import WelcomeComponent from './welcome-component';
 import { actions } from 'reducers/glitterhoof/chronicle';
 
 const mapState = state => ({
-  chronicleFile: state.glitterhoof.chronicle.file || ''
+  chronicleFile: state.glitterhoof.chronicle.file || '',
+  isProcessingFile: state.glitterhoof.chronicle.progress !== null
 });
 
 const mapDispatch = dispatch => ({

@@ -1,4 +1,4 @@
-import { take, call, put } from 'redux-saga/effects';
+import { take, call, put, delay } from 'redux-saga/effects';
 import { actions } from 'reducers/glitterhoof/chronicle';
 
 // Inspired by: https://github.com/redux-saga/redux-saga/issues/1665#issuecomment-436219304
@@ -23,7 +23,9 @@ export function* createChronicle() {
       for( let i = 0; i <= fileContents.length; i += chunkSize ) {
         const chunk = fileContents.slice( i, i + chunkSize );
         yield put( actions.transferChunk( chunk ) );
-        yield take( actions.transferSuccess );
+        yield delay( 50 );
+
+        // yield take( actions.transferSuccess );
         yield put( actions.uploadProgress( i / fileContents.length ) );
       }
     } catch( err ){
