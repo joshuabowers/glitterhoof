@@ -1,12 +1,14 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import GlitterhoofComponent from './glitterhoof-component';
 
 const mapState = state => ({
-  isProcessingFile: state.glitterhoof.chronicle.progress !== null
 });
 
 const mapDispatch = dispatch => ({
 
 });
 
-export default connect( mapState, mapDispatch )( GlitterhoofComponent );
+export default connect( mapState, mapDispatch )(
+  withRouter( GlitterhoofComponent )
+);

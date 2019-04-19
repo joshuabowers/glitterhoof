@@ -4,11 +4,10 @@ import WelcomeComponent from './welcome-component';
 import { actions } from 'reducers/glitterhoof/chronicle';
 
 const mapState = state => ({
-  chronicleFile: state.glitterhoof.chronicle.file || '',
-  isProcessingFile: state.glitterhoof.chronicle.progress !== null
+  chronicleFile: state.glitterhoof.chronicle.file || ''
 });
 
-const mapDispatch = dispatch => ({
+const mapDispatch = (dispatch, props) => ({
   fileChanged: e => dispatch( actions.changeFile( e.target.value ) ),
   dispatchSquires: e => {
     e.preventDefault();
@@ -21,6 +20,8 @@ const mapDispatch = dispatch => ({
           fileInput = form.querySelector('[type=file]'),
           file = fileInput.files[0];
     dispatch( actions.upload( file ) );
+    props.history.push('/status');
+    // return true;
   }
 });
 

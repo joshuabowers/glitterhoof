@@ -16,10 +16,12 @@ const readAsText = blob => {
 export function* createChronicle() {
   while( true ){
     try {
+      console.log( 'Waiting for next upload request' );
       const action = yield take( actions.upload ),
             file = action.payload,
             chunkSize = 1024;
       const fileContents = yield call( readAsText, file );
+      console.log( 'Upload request made for file: ', file )
       for( let i = 0; i <= fileContents.length; i += chunkSize ) {
         const chunk = fileContents.slice( i, i + chunkSize );
         yield put( actions.transferChunk( chunk ) );

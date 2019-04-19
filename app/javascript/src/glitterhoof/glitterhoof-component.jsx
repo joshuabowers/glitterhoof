@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import SiteHeader from './site-header';
 import Welcome from './welcome';
@@ -11,22 +12,22 @@ import NotFound from './not-found';
 
 import styles from './styles';
 
-const GlitterhoofComponent = ({ isProcessingFile, ...props }) => (
+const GlitterhoofComponent = ({ location, ...props }) => (
   <>
     <SiteHeader />
-    <Router>
-      <Switch>
-        {
-          isProcessingFile &&
+    <TransitionGroup>
+      <CSSTransition key={ location.key } timeout={ 300 }
+                     classNames={{ ...styles }}>
+        <Switch location={ location }>
           <Route exact path='/status' component={ Status } />
-        }
-        <Route exact path='/chronicles' component={ Chronicles } />
-        <Route exact path='/about' component={ About } />
-        <Route path='/chronicles/:id' component={ Chronicle } />
-        <Route exact path='/' component={ Welcome } />
-        <Route component={ NotFound } />
-      </Switch>
-    </Router>
+          <Route exact path='/chronicles' component={ Chronicles } />
+          <Route exact path='/about' component={ About } />
+          <Route path='/chronicles/:id' component={ Chronicle } />
+          <Route exact path='/' component={ Welcome } />
+          <Route component={ NotFound } />
+        </Switch>
+      </CSSTransition>
+    </TransitionGroup>
   </>
 );
 

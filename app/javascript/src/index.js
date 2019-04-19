@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { createLogger } from 'redux-logger';
 import { loggers } from 'redux-act';
@@ -30,7 +31,9 @@ sagaMiddleware.run( rootSaga );
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={ store }>
-      <Glitterhoof />
+      <Router>
+        <Glitterhoof />
+      </Router>
     </Provider>,
     document.getElementById('root')
   );

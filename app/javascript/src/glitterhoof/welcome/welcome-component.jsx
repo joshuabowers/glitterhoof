@@ -1,21 +1,20 @@
 import React from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import FileInput from '../file-input';
 import MaterialButton from '../material-button';
 
 import styles from './styles';
 
-const WelcomeComponent = ({ chronicleFile, isProcessingFile, fileChanged,
+const WelcomeComponent = ({ chronicleFile, fileChanged,
                             dispatchSquires, ...props }) => {
   const classes = [
     'material-icons',
     styles.createFlowIndicator,
     chronicleFile === '' ? styles.mustSelectFile : styles.readyToDispatch
   ].join(' ');
-  return isProcessingFile
-    ? ( <Redirect to='/status' /> )
-    : (
+  return (
     <main>
       <p>
         Ever finish an epic hundred-hour long campaign of Crusader Kings 2 and
@@ -31,6 +30,7 @@ const WelcomeComponent = ({ chronicleFile, isProcessingFile, fileChanged,
         file from CK2, then upload it to us via the following form; we'll
         process it and make it look nice.
       </p>
+      <Link to='/about'>About</Link>
       <form className={ styles.uploadChronicle }>
         <FileInput id='chronicleFile' label='Select chronicle file'
                    value={ chronicleFile } onChange={ fileChanged } />

@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './styles';
 
 const AboutComponent = (props) => (
   <main className={ styles.about }>
+    <p><Link to='/'>Back</Link></p>
     <p>An app by Joshua Bowers, &copy; 2019.</p>
     <nav>
       <p>Glitterhoof uses the following assets and resources:</p>

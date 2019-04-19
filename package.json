@@ -16,6 +16,7 @@
     "hint.css": "^2.5.1",
     "normalizr": "^3.3.0",
     "postcss-cssnext": "^3.1.0",
+    "postcss-easings": "^2.0.0",
     "prop-types": "^15.7.2",
     "re-reselect": "^3.0.0",
     "react": "^16.8.6",
