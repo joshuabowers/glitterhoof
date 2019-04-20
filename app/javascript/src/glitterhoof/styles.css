@@ -15,11 +15,8 @@
   transition-property: opacity, transform;
 }
 
-.enter, .exitActive {
-  opacity: 0;
-}
-
 .enter {
+  opacity: 0;
   transform: translateX(100%);
 }
 
@@ -29,6 +26,7 @@
 }
 
 .exitActive {
+  opacity: 0;
   transform: translateX(-100%);
 }
 
