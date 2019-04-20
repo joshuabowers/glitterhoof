@@ -21,7 +21,6 @@ const mapDispatch = (dispatch, props) => ({
           file = fileInput.files[0];
     dispatch( actions.upload( file ) );
     props.history.push('/status');
-    // return true;
   }
 });
 

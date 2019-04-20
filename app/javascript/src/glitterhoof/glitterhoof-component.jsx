@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import SiteHeader from './site-header';
@@ -16,7 +16,7 @@ const GlitterhoofComponent = ({ location, ...props }) => (
   <>
     <SiteHeader />
     <TransitionGroup>
-      <CSSTransition key={ location.key } timeout={ 300 }
+      <CSSTransition key={ location.key } timeout={ 1000 }
                      classNames={{ ...styles }}>
         <Switch location={ location }>
           <Route exact path='/status' component={ Status } />
