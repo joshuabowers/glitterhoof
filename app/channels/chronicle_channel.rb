@@ -16,6 +16,8 @@ class ChronicleChannel < ApplicationCable::Channel
   # for storing the uploaded file for later processing. Notifies client
   # upon success to start the upload.
   def upload_start( payload )
+    @chronicle = Chronicle.create
+
     notify( :begin_transfer )
   end
 
@@ -23,7 +25,12 @@ class ChronicleChannel < ApplicationCable::Channel
   # appropriate database record. Notifies client upon success to trigger
   # sending the next chunk.
   def transfer( payload )
+    @chronicle.file += payload
+    @chronicle.save!
+    
     notify( :transfer_success, payload.length )
+  rescue => e
+    notify( :transfer_failure, e.message )
   end
 
   # Invoked by the client to signal uploading complete. After this, self can
@@ -31,6 +38,8 @@ class ChronicleChannel < ApplicationCable::Channel
   # usable chronicle.
   def upload_finalize( payload )
     notify( :finished_upload )
+
+    @chronicle.process_file
   end
 
   private

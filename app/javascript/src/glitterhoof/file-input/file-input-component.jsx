@@ -5,7 +5,7 @@ const FileInputComponent = ({ id, value, label, onChange, ...props }) => {
   const labelText = value ? value.split('\\').pop() : label;
   return (
     <>
-      <input type='file' id={ id } name={ id }
+      <input type='file' id={ id } name={ id } accept='.txt'
              onChange={ onChange }
              className={ styles.fileInput } />
       <label className={ styles.fileInputLabel } htmlFor={ id } >
