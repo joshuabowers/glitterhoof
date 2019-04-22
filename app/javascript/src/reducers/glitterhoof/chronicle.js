@@ -1,16 +1,27 @@
 import { createAction, createReducer } from 'redux-act';
 import { combineReducers } from 'redux';
 
+export const cablecarPrefix = 'CHRONICLE_';
+
+const createChannelAction = (actionName) => (
+  createAction( cablecarPrefix + actionName.toUpperCase() )
+);
+
 export const actions = {
   changeFile: createAction('user selected chronicle file'),
 
   upload: createAction('initiates chronicle file upload'),
 
-  transferChunk: createAction('transfers a file chunk to the server'),
-  transferSuccess: createAction('file chunk transfer sucessful'),
+  startUpload: createChannelAction( 'upload_start' ),
+  beginTransfer: createChannelAction( 'begin_transfer' ),
+  finalizeUpload: createChannelAction( 'upload_finalize' ),
+
+  transferChunk: createChannelAction( 'transfer' ),
+  transferSuccess: createChannelAction( 'transfer_success' ),
 
   uploadProgress: createAction('Chronicle file upload progress status'),
-  uploadSuccess: createAction('Upload of chronicle file has succeeded'),
+  // uploadSuccess: createAction('Upload of chronicle file has succeeded'),
+  uploadSuccess: createChannelAction( 'finished_upload' ),
   uploadFailure: createAction('Upload of chronicle file has failed'),
 
   processProgress: createAction(''),

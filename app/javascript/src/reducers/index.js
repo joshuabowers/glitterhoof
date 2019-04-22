@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
-import glitterhoof from './glitterhoof';
+import glitterhoof, { cablecarPrefix } from './glitterhoof';
 
+export { cablecarPrefix };
 export default combineReducers({ glitterhoof });

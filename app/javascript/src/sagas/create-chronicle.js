@@ -13,6 +13,11 @@ const readAsText = blob => {
   });
 };
 
+function* rpc( action, response ) {
+  yield put( action );
+  yield take( response );
+}
+
 export function* createChronicle() {
   while( true ){
     try {
@@ -22,14 +27,18 @@ export function* createChronicle() {
             chunkSize = 1024;
       const fileContents = yield call( readAsText, file );
       console.log( 'Upload request made for file: ', file )
+
+      console.log('Initializing upload request with server...');
+      yield call( rpc, actions.startUpload(), actions.beginTransfer );
+
       for( let i = 0; i <= fileContents.length; i += chunkSize ) {
         const chunk = fileContents.slice( i, i + chunkSize );
-        yield put( actions.transferChunk( chunk ) );
-        yield delay( 50 );
-
-        // yield take( actions.transferSuccess );
+        yield call( rpc, actions.transferChunk( chunk ), actions.transferSuccess );
         yield put( actions.uploadProgress( i / fileContents.length ) );
       }
+
+      console.log( 'Finializing upload with server...' );
+      yield call( rpc, actions.finalizeUpload(), actions.uploadSuccess );
     } catch( err ){
       yield put( actions.uploadFailure( err ) );
     }
