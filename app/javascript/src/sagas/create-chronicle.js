@@ -1,5 +1,6 @@
 import { take, call, put, delay } from 'redux-saga/effects';
 import { actions } from 'reducers/glitterhoof/chronicle';
+import history from 'utils/history';
 
 // Inspired by: https://github.com/redux-saga/redux-saga/issues/1665#issuecomment-436219304
 // Wraps a file read operation in a Promise, which can then be made into
@@ -41,6 +42,18 @@ export function* createChronicle() {
       yield call( rpc, actions.finalizeUpload(), actions.uploadSuccess );
     } catch( err ){
       yield put( actions.uploadFailure( err ) );
+    }
+  }
+}
+
+export function* analyzeChronicle() {
+  while( true ){
+    try {
+      const action = yield take( actions.processSuccess );
+      // TODO: Need to pull /api/chronicles/ for the data for this chronicle,
+      // load into redux, then push history.
+      history.push( '/chronicles/' + action.payload );
+    } catch( err ){
     }
   }
 }

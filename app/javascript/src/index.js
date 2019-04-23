@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import { createLogger } from 'redux-logger';
 import { loggers } from 'redux-act';
@@ -13,6 +13,7 @@ import Glitterhoof from './glitterhoof'
 import styles from './styles.css';
 import rootReducer, { cablecarPrefix } from './reducers';
 import sagaMiddleware, { rootSaga } from './sagas';
+import history from './utils/history';
 
 const logger = createLogger({
   ...loggers.reduxLogger
@@ -33,7 +34,7 @@ cablecar.connect( store, 'ChronicleChannel', { prefix: cablecarPrefix } );
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={ store }>
-      <Router>
+      <Router history={ history }>
         <Glitterhoof />
       </Router>
     </Provider>,

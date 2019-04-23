@@ -36,7 +36,7 @@ class Chronicle
     # Persist, and let the client know the processing is complete
     save!
 
-    ChronicleChannel.notify( connection_token, :process_success )
+    ChronicleChannel.notify( connection_token, :process_success, self.id.to_s )
   rescue => e
     ChronicleChannel.notify( connection_token, :process_failure, e.message )
   end
