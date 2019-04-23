@@ -9,6 +9,6 @@ const mapDispatch = dispatch => ({
 
 });
 
-export default connect( mapState, mapDispatch )(
-  withRouter( GlitterhoofComponent )
+export default withRouter(
+  connect( mapState, mapDispatch )( GlitterhoofComponent )
 );

@@ -20,13 +20,13 @@ export const actions = {
   transferSuccess: createChannelAction( 'transfer_success' ),
 
   uploadProgress: createAction('Chronicle file upload progress status'),
-  // uploadSuccess: createAction('Upload of chronicle file has succeeded'),
   uploadSuccess: createChannelAction( 'finished_upload' ),
   uploadFailure: createAction('Upload of chronicle file has failed'),
 
-  processProgress: createAction(''),
-  processSuccess: createAction(''),
-  processFailure: createAction('')
+  startProcess: createChannelAction( 'process_start' ),
+  processProgress: createChannelAction( 'process_progress' ),
+  processSuccess: createChannelAction( 'process_success' ),
+  processFailure: createChannelAction( 'process_failure' )
 };
 
 const file = createReducer({
@@ -36,7 +36,7 @@ const file = createReducer({
 
 const step = createReducer({
   [actions.upload]: state => 'Upload',
-  [actions.processProgress]: state => 'Analyzing file',
+  [actions.startProcess]: state => 'Analyzing file',
   [actions.uploadSuccess]: state => 'Upload success',
   [actions.processSuccess]: state => 'Analysis complete',
   [actions.uploadFailure]: state => 'Failure',
@@ -45,9 +45,11 @@ const step = createReducer({
 
 const progress = createReducer({
   [actions.upload]: state => 0,
+  [actions.startProcess]: state => 0,
   [actions.uploadProgress]: (state, percentComplete) => percentComplete,
   [actions.processProgress]: (state, percentComplete) => percentComplete,
-  [actions.uploadSuccess]: state => 100
+  [actions.uploadSuccess]: state => 100,
+  [actions.processSuccess]: state => 100
 }, null);
 
 const error = createReducer({

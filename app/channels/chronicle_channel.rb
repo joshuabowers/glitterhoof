@@ -27,7 +27,7 @@ class ChronicleChannel < ApplicationCable::Channel
   def transfer( payload )
     @chronicle.file += payload
     @chronicle.save!
-    
+
     notify( :transfer_success, payload.length )
   rescue => e
     notify( :transfer_failure, e.message )
@@ -39,7 +39,15 @@ class ChronicleChannel < ApplicationCable::Channel
   def upload_finalize( payload )
     notify( :finished_upload )
 
-    @chronicle.process_file
+    @chronicle.process_file!( connection_token )
+  end
+
+  def self.notify( connection_token, action, payload = nil )
+    operation = {
+      type: :"#{ REDUX_PREFIX }#{ action.upcase }"
+    }
+    operation[:payload] = payload if payload
+    self.broadcast_to( connection_token, operation )
   end
 
   private
@@ -55,10 +63,6 @@ class ChronicleChannel < ApplicationCable::Channel
   end
 
   def notify( action, payload = nil )
-    operation = {
-      type: :"#{ REDUX_PREFIX }#{ action.upcase }"
-    }
-    operation[:payload] = payload if payload
-    self.class.broadcast_to( connection_token, operation )
+    self.class.notify( connection_token, action, payload )
   end
 end
