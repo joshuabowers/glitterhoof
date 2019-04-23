@@ -19,6 +19,8 @@ environment.plugins.prepend(
   new webpack.ProvidePlugin({
     ActionCable: 'actioncable'
   })
-)
+);
+
+environment.exclude = /redux-cablecar/
 
 module.exports = environment
