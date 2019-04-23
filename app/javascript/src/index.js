@@ -29,7 +29,7 @@ const store = createStore(
 );
 
 sagaMiddleware.run( rootSaga );
-cablecar.connect( store, 'ChronicleChannel', { prefix: cablecarPrefix } );
+// cablecar.connect( store, 'ChronicleChannel', { prefix: cablecarPrefix } );
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
