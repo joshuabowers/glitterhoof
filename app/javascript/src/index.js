@@ -21,7 +21,8 @@ const logger = createLogger({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = composeEnhancers(
-  applyMiddleware( logger, sagaMiddleware, cablecar )
+  // applyMiddleware( logger, sagaMiddleware, cablecar )
+  applyMiddleware( logger, sagaMiddleware )
 );
 
 const store = createStore(
