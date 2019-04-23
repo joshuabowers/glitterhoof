@@ -13,8 +13,8 @@ export function* rootSaga() {
     helloSaga(),
     createChronicle(),
     analyzeChronicle(),
-    hydrate(),
-    hydrateChronicle()
+    hydrateChronicle(),
+    hydrate()
   ]);
 }
 
