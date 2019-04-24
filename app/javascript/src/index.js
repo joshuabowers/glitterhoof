@@ -23,7 +23,7 @@ const logger = createLogger({
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = composeEnhancers(
   // applyMiddleware( logger, sagaMiddleware, cablecar )
-  applyMiddleware( logger, sagaMiddleware )
+  applyMiddleware( logger, sagaMiddleware, cable )
 );
 
 const store = createStore(
@@ -31,6 +31,8 @@ const store = createStore(
 );
 
 sagaMiddleware.run( rootSaga );
+cable.connect( 'ChronicleChannel', { prefix: cablecarPrefix } );
+
 // cablecar.connect( store, 'ChronicleChannel', { prefix: cablecarPrefix } );
 
 document.addEventListener('DOMContentLoaded', () => {
