@@ -3,12 +3,12 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.4.3",
-    "@babel/helpers": "^7.4.3",
     "@babel/plugin-external-helpers": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.4.3",
+    "@babel/plugin-transform-typeof-symbol": "^7.2.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "^4.0.2",
