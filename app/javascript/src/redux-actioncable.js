@@ -8,6 +8,9 @@ const cable = store => {
     const params = { channel: channel, ...cableParams };
 
     consumer = ActionCable.createConsumer( config.url );
+
+    console.log( consumer );
+
     subscription = consumer.subscriptions.create( params, {
       initialized: () => {
         store.dispatch( { type: 'CABLE_INITIALIZED' } );
