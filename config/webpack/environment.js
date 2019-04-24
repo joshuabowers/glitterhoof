@@ -21,6 +21,4 @@ environment.plugins.prepend(
   })
 );
 
-environment.exclude = /(node_modules)/;
-
 module.exports = environment
