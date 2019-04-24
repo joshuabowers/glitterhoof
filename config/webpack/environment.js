@@ -21,6 +21,6 @@ environment.plugins.prepend(
   })
 );
 
-environment.exclude = /redux-cablecar/
+environment.exclude = /(node_modules)/;
 
 module.exports = environment
