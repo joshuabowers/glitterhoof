@@ -8,7 +8,7 @@ import { loggers } from 'redux-act';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 // import cablecar from 'redux-cablecar';
-import ActionCable from 'actioncable';
+import cable from 'redux-actioncable';
 
 import Glitterhoof from './glitterhoof'
 import styles from './styles.css';
