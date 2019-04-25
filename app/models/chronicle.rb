@@ -2,6 +2,7 @@ class Chronicle
   include Mongoid::Document
   field :dynasty, type: String
   field :started_in, type: Integer
+  field :ended_in, type: Integer
   field :file, type: String, default: ''
   field :available, type: Boolean, default: false
 
@@ -31,6 +32,7 @@ class Chronicle
     # Update the chronicle's primary data based off of the first event.
     self.dynasty = events.first.text.match(/Chronicle of House ([^,\s]+)/)[1]
     self.started_in = events.first.year
+    self.ended_in = events.last.year
     self.available = true
 
     # Persist, and let the client know the processing is complete
