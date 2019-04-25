@@ -27,10 +27,6 @@ export const actions = {
   processProgress: createChannelAction( 'process_progress' ),
   processSuccess: createChannelAction( 'process_success' ),
   processFailure: createChannelAction( 'process_failure' ),
-
-  hydrate: createAction('hydrate app on page load'),
-  hydrateSuccess: createAction('hydrate of app successful'),
-  hydrateFailed: createAction('hydrate of app failed')
 };
 
 const file = createReducer({
@@ -65,20 +61,7 @@ const error = createReducer({
 
 const id = createReducer({
   [actions.processSuccess]: (state, id) => id,
-  [actions.hydrate]: (state, id) => id
+  // [actions.hydrate]: (state, id) => id
 }, null);
 
-const dynasty = createReducer({
-  [actions.hydrateSuccess]: (state, { dynasty }) => dynasty
-}, null);
-
-const events = createReducer({
-  [actions.hydrateSuccess]: (state, { events }) => events
-}, null);
-
-const startedIn = createReducer({
-  [actions.hydrateSuccess]: (state, { started_in }) => started_in
-}, null);
-
-export default combineReducers({ file, step, progress, error,
-                                 id, dynasty, events, startedIn });
+export default combineReducers({ file, step, progress, error, id });
