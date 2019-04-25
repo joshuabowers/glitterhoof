@@ -9,7 +9,14 @@ export function* hydrateChronicle(){
     const action = yield take([ actions.processSuccess, actions.hydrate ]),
           id = action.payload;
 
-    console.log( 'Within hydrateChronicle: id: ', id );
+    try {
+      const result = yield call( fetch, `/api/chronicles/${ id }` );
+      const data = yield result.json();
+
+      yield put( actions.hydrateSuccess( data ) );
+    } catch( e ) {
+      yield put( actions.hydrateFailed( e ) );
+    }
   }
 }
 
