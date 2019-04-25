@@ -9,6 +9,8 @@ export function* hydrateChronicle(){
     const action = yield take([ actions.processSuccess, actions.hydrate ]),
           id = action.payload;
 
+    console.log( 'hydrateChronicle:', action );
+
     // We are only interested in hydration events which target a specific
     // chronicle.
     if( id === undefined ){ continue; }
@@ -17,6 +19,8 @@ export function* hydrateChronicle(){
       const result = yield call( fetch, `/api/chronicles/${ id }` );
       const data = yield result.json();
 
+      // Possibly need to break this up into a series of actions, as
+      // the app chugs on dumping all events at once.
       yield put( actions.hydrateSuccess( [data] ) );
     } catch( e ) {
       yield put( actions.hydrateFailed( e ) );
@@ -27,6 +31,8 @@ export function* hydrateChronicle(){
 export function* hydrateChronicles() {
   while( true ){
     const action = yield take( actions.hydrate );
+
+    console.log( 'hydrateChronicle:', action );
 
     // We are only interested in hydration events which aren't specifically
     // targetting a chronicle.
