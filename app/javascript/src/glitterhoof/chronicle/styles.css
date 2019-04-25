@@ -9,4 +9,16 @@
 
   column-rule: 0.1em solid gray;
   column-gap: 2em;
+
+  position: relative;
+}
+
+.chronicle header {
+  break-before: column;
+  break-after: avoid-column;
+}
+
+.chronicle header > * {
+  margin-top: 0;
+  text-align: center;
 }
