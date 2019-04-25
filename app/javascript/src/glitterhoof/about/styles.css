@@ -1,12 +1,14 @@
 .about {
-  font-size: smaller;
-
-  padding: 0.5em;
-  margin: 0.5em;
 }
 
 .about a {
-  color: cyan;
+  display: inline-block;
+  color: blue;
+  transition: all 300ms ease-in-circ;
+}
+
+.about a:hover {
+  transform: translateY(-0.05em) scale(1.05);
 }
 
 .about a:visited {
