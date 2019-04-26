@@ -13,7 +13,7 @@ export function* hydrateChronicle(){
 
     // We are only interested in hydration events which target a specific
     // chronicle.
-    if( id === undefined ){ continue; }
+    if( id === undefined || id === '' ){ continue; }
 
     try {
       const result = yield call( fetch, `/api/chronicles/${ id }` );
