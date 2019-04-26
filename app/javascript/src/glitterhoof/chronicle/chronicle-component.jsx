@@ -3,26 +3,26 @@ import React from 'react';
 import Event from './event';
 import styles from './styles';
 
-const ChronicleComponent = ({ dynasty, groups, ...props }) => {
-  const groupedEventList = Object.entries( groups ).map(
-    ([ year, events ]) => (
-      <React.Fragment key={ year }>
-        <header><h3>{ year }</h3></header>
-        {
-          events.map(
-            event => <Event key={ event.id } { ...event } />
-          )
-        }
-      </React.Fragment>
-    )
-  );
+const groupedEventList = groups => Object.entries( groups ).map(
+  ([ year, events ]) => (
+    <section key={ year } id={ `year:${ year }` }>
+      <header><h3>{ year }</h3></header>
+      {
+        events.map(
+          event => <Event key={ event.id } { ...event } />
+        )
+      }
+    </section>
+  )
+);
 
-  return (
-    <main className={ styles.chronicle }>
+const ChronicleComponent = ({ dynasty, groups, ...props }) => (
+  <main className={ styles.chronicle }>
+    <article className={ styles.events }>
       <header><h2>{ dynasty }</h2></header>
-      { groupedEventList }
-    </main>
-  );
-}
+      { groupedEventList( groups ) }
+    </article>
+  </main>
+);
 
 export default ChronicleComponent;
