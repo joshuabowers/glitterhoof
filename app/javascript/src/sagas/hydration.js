@@ -1,8 +1,27 @@
-import { take, call, put, delay, select } from 'redux-saga/effects';
-import history from 'utils/history';
+import { all, take, call, put, select } from 'redux-saga/effects';
 import { actions } from 'reducers/glitterhoof';
+import { actions as historyActions } from 'reducers';
 
 const getChronicle = (state, id) => state.glitterhoof.chronicles[id];
+
+export function* hydrateOnHistoryChange() {
+  while( true ){
+    const action = yield take( historyActions.historyChanged ),
+          { location } = action.payload;
+
+    console.log( 'location changed to:', location );
+
+    const isChronicles = location.pathname.match( /\/chronicles(?:\/(\w+))?/);
+    if( isChronicles !== null ){
+      const id = isChronicles[1];
+      if( id !== null ){
+        yield put( actions.hydrate( id ) );
+      } else {
+        yield put( actions.hydrate() );
+      }
+    }
+  }
+}
 
 // Fetches data associated with a given chronicle id from the server and
 // updates the redux store with that data.
@@ -35,7 +54,7 @@ export function* hydrateChronicle(){
   }
 }
 
-export function* hydrateChronicles() {
+export function* hydrateList() {
   while( true ){
     const action = yield take( actions.hydrate );
 
@@ -56,14 +75,10 @@ export function* hydrateChronicles() {
   }
 }
 
-// Bootstraps app by grabbing an id associated with the current URL on page
-// load.
-export function* hydrate(){
-  const location = history.location;
-  const id = location.pathname.match( /^\/chronicles\/(\w+)$/ );
-  if( id !== null ){
-    yield put( actions.hydrate( id[1] ) );
-  } else if( location.pathname.match( /^\/chronicles/ ) ) {
-    yield put( actions.hydrate() );
-  }
+export function* hydration() {
+  yield all([
+    hydrateChronicle(),
+    hydrateList(),
+    hydrateOnHistoryChange()
+  ]);
 }

@@ -7,7 +7,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
-  loadChronicle: e => dispatch( actions.hydrate( e.target.closest('a').id ) )
+  // loadChronicle: e => dispatch( actions.hydrate( e.target.closest('a').id ) )
 });
 
 export default connect( mapState, mapDispatch )( ChroniclesComponent );

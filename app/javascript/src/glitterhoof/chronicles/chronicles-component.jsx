@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './styles';
 
-const Chronicle = ({ id, dynasty, startedIn, endedIn, loadChronicle }) => (
-  <Link className={ styles.chronicle } onClick={ loadChronicle } 
+const Chronicle = ({ id, dynasty, startedIn, endedIn }) => (
+  <Link className={ styles.chronicle }
         to={ `/chronicles/${ id }` } id={ id }>
     <header><h2>{ dynasty }</h2></header>
     <span>
@@ -12,17 +12,17 @@ const Chronicle = ({ id, dynasty, startedIn, endedIn, loadChronicle }) => (
   </Link>
 );
 
-const chronicleList = (chronicles, loadChronicle) => (
+const chronicleList = (chronicles) => (
   chronicles.map(
-    chronicle => <Chronicle key={ chronicle.id } loadChronicle={ loadChronicle }
+    chronicle => <Chronicle key={ chronicle.id }
                             { ...chronicle } />
   )
 )
 
-const ChroniclesComponent = ({ chronicles, loadChronicle }) => (
+const ChroniclesComponent = ({ chronicles }) => (
   <main className={ styles.chronicles }>
     {
-      chronicleList( chronicles, loadChronicle )
+      chronicleList( chronicles )
     }
   </main>
 );

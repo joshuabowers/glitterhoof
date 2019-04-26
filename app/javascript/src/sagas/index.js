@@ -2,7 +2,7 @@ import createSagaMiddleware from 'redux-saga';
 import { put, all } from 'redux-saga/effects';
 
 import { createChronicle, analyzeChronicle } from './create-chronicle';
-import { hydrate, hydrateChronicle, hydrateChronicles } from './hydrate-chronicle';
+import { hydration } from './hydration';
 
 export function* helloSaga() {
   console.log( 'Running rootSaga!' );
@@ -13,9 +13,7 @@ export function* rootSaga() {
     helloSaga(),
     createChronicle(),
     analyzeChronicle(),
-    hydrateChronicle(),
-    hydrateChronicles(),
-    hydrate()
+    hydration()
   ]);
 }
 

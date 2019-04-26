@@ -11,9 +11,9 @@ import cable from 'redux-actioncable';
 
 import Glitterhoof from './glitterhoof'
 import styles from './styles.css';
-import rootReducer, { cablecarPrefix } from './reducers';
+import rootReducer, { cablecarPrefix, actions } from './reducers';
 import sagaMiddleware, { rootSaga } from './sagas';
-import history from './utils/history';
+import history, { historyChangedMiddleware } from './utils/history';
 
 const logger = createLogger({
   ...loggers.reduxLogger
@@ -21,7 +21,7 @@ const logger = createLogger({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const middleware = composeEnhancers(
-  applyMiddleware( logger, sagaMiddleware, cable )
+  applyMiddleware( logger, sagaMiddleware, historyChangedMiddleware, cable )
 );
 
 const store = createStore(
@@ -30,6 +30,8 @@ const store = createStore(
 
 sagaMiddleware.run( rootSaga );
 cable.connect( 'ChronicleChannel', { prefix: cablecarPrefix } );
+
+store.dispatch( actions.historyChanged( history.location, 'PUSH' ) );
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
