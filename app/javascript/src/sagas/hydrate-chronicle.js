@@ -1,6 +1,8 @@
-import { take, call, put, delay } from 'redux-saga/effects';
+import { take, call, put, delay, select } from 'redux-saga/effects';
 import history from 'utils/history';
 import { actions } from 'reducers/glitterhoof';
+
+const getChronicle = (state, id) => state.glitterhoof.chronicles[id];
 
 // Fetches data associated with a given chronicle id from the server and
 // updates the redux store with that data.
@@ -16,6 +18,11 @@ export function* hydrateChronicle(){
     if( id === undefined || id === '' ){ continue; }
 
     try {
+      // Check to see if we already have the events for this chronicle;
+      // no sense wasting bandwidth and time refetching.
+      const chronicle = yield select( getChronicle, id );
+      if( chronicle && chronicle.events && chronicle.events.length > 0 ){ continue; }
+
       const result = yield call( fetch, `/api/chronicles/${ id }` );
       const data = yield result.json();
 
