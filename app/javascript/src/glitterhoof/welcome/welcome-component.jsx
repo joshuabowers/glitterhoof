@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import FileInput from '../file-input';
 import MaterialButton from '../material-button';
@@ -29,7 +28,6 @@ const WelcomeComponent = ({ chronicleFile, fileChanged,
         file from CK2, then upload it to us via the following form; we'll
         process it and make it look nice.
       </p>
-      <Link to='/about'>About</Link>
       <form className={ styles.uploadChronicle }>
         <FileInput id='chronicleFile' label='Select chronicle file'
                    value={ chronicleFile } onChange={ fileChanged } />

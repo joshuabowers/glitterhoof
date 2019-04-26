@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import SiteHeader from './site-header';
+import NavBar from './nav-bar';
 import Welcome from './welcome';
 import Chronicles from './chronicles';
 import Chronicle from './chronicle';
@@ -15,6 +16,7 @@ import styles from './styles';
 const GlitterhoofComponent = ({ location, ...props }) => (
   <>
     <SiteHeader />
+    <NavBar />
     <TransitionGroup>
       <CSSTransition key={ location.key } timeout={ 1000 }
                      classNames={{ ...styles }}>

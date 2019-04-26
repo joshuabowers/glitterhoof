@@ -1,0 +1,21 @@
+.navBar {
+  margin: -2.5em 6em 0.5em;
+  position: relative;
+}
+
+.navBar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navBar li {
+  display: inline;
+}
+
+.navBar ul, .navBar li {
+  margin: 0;
+  padding: 0;
+}
