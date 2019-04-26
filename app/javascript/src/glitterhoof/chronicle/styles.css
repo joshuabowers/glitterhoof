@@ -5,9 +5,7 @@
   padding: 1em 2em 0;
 
   overflow-x: auto;
-  columns: 10em auto;
-
-  column-rule: 0.1em solid gray;
+  columns: 15em auto;
   column-gap: 2em;
 
   position: relative;
