@@ -14,10 +14,10 @@ export function* hydrateOnHistoryChange() {
     const isChronicles = location.pathname.match( /\/chronicles(?:\/(\w+))?/);
     if( isChronicles !== null ){
       const id = isChronicles[1];
-      if( id !== null ){
-        yield put( actions.hydrate( id ) );
+      if( id !== undefined ){
+        yield put( actions.hydrateChronicle( id ) );
       } else {
-        yield put( actions.hydrate() );
+        yield put( actions.hydrateList() );
       }
     }
   }
@@ -27,14 +27,10 @@ export function* hydrateOnHistoryChange() {
 // updates the redux store with that data.
 export function* hydrateChronicle(){
   while( true ){
-    const action = yield take([ actions.processSuccess, actions.hydrate ]),
+    const action = yield take([ actions.processSuccess, actions.hydrateChronicle ]),
           id = action.payload;
 
     console.log( 'hydrateChronicle:', action );
-
-    // We are only interested in hydration events which target a specific
-    // chronicle.
-    if( id === undefined || id === '' ){ continue; }
 
     try {
       // Check to see if we already have the events for this chronicle;
@@ -56,13 +52,9 @@ export function* hydrateChronicle(){
 
 export function* hydrateList() {
   while( true ){
-    const action = yield take( actions.hydrate );
+    const action = yield take( actions.hydrateList );
 
-    console.log( 'hydrateChronicle:', action );
-
-    // We are only interested in hydration events which aren't specifically
-    // targetting a chronicle.
-    if( action.payload !== undefined ){ continue; }
+    console.log( 'hydrateList:', action );
 
     try {
       const result = yield call( fetch, '/api/chronicles' );

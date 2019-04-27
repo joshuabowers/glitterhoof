@@ -1,7 +1,8 @@
 import { createAction, createReducer } from 'redux-act';
 
 export const actions = {
-    hydrate: createAction('hydrate app on page load'),
+    hydrateChronicle: createAction('hydrate individual chronicle'),
+    hydrateList: createAction('hydrate chronicles list'),
     hydrateSuccess: createAction('hydrate of app successful'),
     hydrateFailed: createAction('hydrate of app failed'),
 }
