@@ -6,7 +6,7 @@ class Chronicle
   field :file, type: String, default: ''
   field :available, type: Boolean, default: false
 
-  embeds_many :events
+  embeds_many :events, cascade_callbacks: true
 
   scope :available, -> { where( available: true ) }
 

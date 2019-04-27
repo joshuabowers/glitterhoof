@@ -17,7 +17,7 @@ class Event
       when /through deeds and character/i
         :nicknamed
       when /went to war/i
-        :war_delaration
+        :war_declaration
       when /won the war/i
         :war_won
       when /victorious in the battle/i
@@ -26,6 +26,16 @@ class Event
         :battle_defeat
       when /created the title/i
         :title_created
+      when /died under suspicious circumstances/i
+        :assassination
+      when /died (a|of)/i
+        :death
+      when /married/i
+        :marriage
+      when /strange and wonderful serpents/i
+        :serpents
+      when /dragon/i
+        :dragon
       end
   end
 end
