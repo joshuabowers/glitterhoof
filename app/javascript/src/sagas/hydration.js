@@ -40,10 +40,17 @@ export function* hydrateChronicle(){
 
       const result = yield call( fetch, `/api/chronicles/${ id }` );
       const data = yield result.json();
+      // const { events, ...newChronicle } = data;
+
+      // console.log( events );
 
       // Possibly need to break this up into a series of actions, as
       // the app chugs on dumping all events at once.
       yield put( actions.hydrateSuccess( [data] ) );
+
+      // for( const event in events ){
+      //   yield put( actions.hydrateEvent( event, newChronicle.id ) );
+      // }
     } catch( e ) {
       yield put( actions.hydrateFailed( e ) );
     }
