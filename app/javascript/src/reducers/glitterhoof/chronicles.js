@@ -5,7 +5,7 @@ export const actions = {
     hydrateList: createAction('hydrate chronicles list'),
     hydrateEvent: createAction(
       'hydrate individual event',
-      (event, chronicleId) => ({event, chronicleId})
+      (events, chronicleId) => ({events, chronicleId})
     ),
     hydrateSuccess: createAction('hydrate of app successful'),
     hydrateFailed: createAction('hydrate of app failed'),
@@ -21,13 +21,13 @@ export default createReducer({
       }), {} )
     )
   }),
-  [actions.hydrateEvent]: (state, { event, chronicleId }) => ({
+  [actions.hydrateEvent]: (state, { events, chronicleId }) => ({
     ...state,
     [chronicleId]: {
       ...state[chronicleId],
       events: [
         ...(( state[chronicleId] && state[chronicleId].events ) || []),
-        event
+        ...events
       ]
     }
   })

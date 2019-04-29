@@ -1,4 +1,4 @@
-import { all, take, call, put, select } from 'redux-saga/effects';
+import { all, take, call, put, select, delay, race } from 'redux-saga/effects';
 import { actions } from 'reducers/glitterhoof';
 import { actions as historyActions } from 'reducers';
 
@@ -33,24 +33,23 @@ export function* hydrateChronicle(){
     console.log( 'hydrateChronicle:', action );
 
     try {
-      // Check to see if we already have the events for this chronicle;
-      // no sense wasting bandwidth and time refetching.
-      const chronicle = yield select( getChronicle, id );
-      if( chronicle && chronicle.events && chronicle.events.length > 0 ){ continue; }
-
       const result = yield call( fetch, `/api/chronicles/${ id }` );
       const data = yield result.json();
-      // const { events, ...newChronicle } = data;
-
-      // console.log( events );
+      const { events, eventCount, ...newChronicle } = data;
 
       // Possibly need to break this up into a series of actions, as
       // the app chugs on dumping all events at once.
-      yield put( actions.hydrateSuccess( [data] ) );
+      yield put( actions.hydrateSuccess( [newChronicle] ) );
 
-      // for( const event in events ){
-      //   yield put( actions.hydrateEvent( event, newChronicle.id ) );
-      // }
+      for( let i = 0; i < eventCount; i += 50 ){
+        const chunk = events.slice( i, i+50 )
+        yield put( actions.hydrateEvent( chunk, newChronicle.id ) );
+        const { next, skip } = yield race({
+          next: delay( 500 ),
+          skip: take( actions.hydrateList )
+        });
+        if( skip ){ break; }
+      }
     } catch( e ) {
       yield put( actions.hydrateFailed( e ) );
     }
