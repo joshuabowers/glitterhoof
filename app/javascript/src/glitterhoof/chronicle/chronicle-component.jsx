@@ -5,23 +5,21 @@ import styles from './styles';
 
 const groupedEventList = groups => Object.entries( groups ).map(
   ([ year, events ]) => (
-    <section key={ year } id={ `year:${ year }` }>
+    <React.Fragment key={ year }>
       <header><h3>{ year }</h3></header>
       {
         events.map(
           event => <Event key={ event.id } { ...event } />
         )
       }
-    </section>
+    </React.Fragment>
   )
 );
 
 const ChronicleComponent = ({ dynasty, groups, ...props }) => (
   <main className={ styles.chronicle }>
-    <article className={ styles.events }>
-      <header><h2>{ dynasty }</h2></header>
-      { groupedEventList( groups ) }
-    </article>
+    <header><h2>{ dynasty }</h2></header>
+    { groupedEventList( groups ) }
   </main>
 );
 
