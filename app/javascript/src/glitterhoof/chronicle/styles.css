@@ -10,22 +10,14 @@
   padding: 1em 2em 0;
 
   overflow-x: auto;
-  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
 .chronicle header {
   break-before: column;
-  break-after: avoid-column;
 }
 
 .chronicle header > * {
   margin-top: 0;
   text-align: center;
 }
-
-/* .events section header {
-  position: sticky;
-  left: 0;
-  width: 15em;
-} */
