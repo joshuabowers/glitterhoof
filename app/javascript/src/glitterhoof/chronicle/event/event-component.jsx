@@ -10,11 +10,13 @@ const categories = context.keys().reduce(
 
 const EventComponent = ({ id, category, text, year, ...props }) => (
   <p id={ id } className={ styles.event }>
+    { category !== null && <img src={ categories[category] } alt={ category } /> }
     <span className={ styles.dropcap }>
-      { category !== null && <img src={ categories[category] } alt={ category } /> }
       { text.slice( 0, 1 ) }
     </span>
-    { text.slice( 1 ) }
+    <span className={ styles.text }>
+      { text.slice( 1 ) }
+    </span>
   </p>
 );
 
