@@ -8,6 +8,8 @@ class Chronicle
 
   embeds_many :events, cascade_callbacks: true
 
+  default_scope -> { order( dynasty: :asc, started_in: :asc, ended_in: :asc ) }
+
   scope :available, -> { where( available: true ) }
 
   def process_file!( connection_token )
@@ -30,7 +32,7 @@ class Chronicle
     end
 
     # Update the chronicle's primary data based off of the first event.
-    self.dynasty = events.first.text.match(/Chronicle of House ([^,\s]+)/)[1]
+    self.dynasty = events.first.text.match(/Chronicle of House ([^,]+), in which/)[1]
     self.started_in = events.first.year
     self.ended_in = events.last.year
     self.available = true

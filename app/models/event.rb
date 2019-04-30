@@ -28,10 +28,12 @@ class Event
         :supported_ally
       when /victorious in the battle/i
         :battle_victory
-      when /defeated in the battle/i
+      when /(defeated in)|lost the battle/i
         :battle_defeat
-      when /captured|(lost (\w+) to the forces)|(taking (.+) from the enemy)/i
+      when /captured|(lost (.+) to the forces)|(taking (.+) from the enemy)/i
         :captured
+      when /displayed.+great power/i
+        :special_title_created
       when /created the title/i
         :title_created
       when /died under suspicious circumstances/i
@@ -46,17 +48,19 @@ class Event
         :alchemy
       when /hajj|pilgrimage/i
         :pilgrimage
-      when /skill at arms/i
+      when /(skill at arms)|(grand tournament)/i
         :tournament
       when /usurped/i
         :usurped
       when /succeeded to the throne/i
         :succession
+      when /inherited/i
+        :inherited
       when /crusade|jihad|great holy war/i
         :great_holy_war
-      when /was born to/i
+      when /(was born to)|(children were born)/i
         :baby
-      when /executed/i
+      when /executed|beheaded|(burnt at the stake)/i
         :execution
       when /imprisoned/i
         :imprisoned
@@ -74,6 +78,12 @@ class Event
         :revolt
       when /rebellion|(lost the war against)/i
         :rebellion
+      when /norsemen/i
+        :old_gods
+      when /leaving.+nomad life behind/i
+        :nomad_no_more
+      when /abandoning the old tribal ways/i
+        :tribal_no_more
       when /strange and wonderful serpents/i
         :serpents
       when /dragon/i
@@ -90,12 +100,14 @@ class Event
         :rabbit
       when /plague/i
         :reaper
-      when /died bedridden/i
+      when /died bedridden|comatose/i
         :bedridden
-      when /died (a|of|from|frothing)/i
+      when /died (a|of|from|frothing|clutching)/i
         :death
       when /giant destroyed/i
         :giant
+      when /earth shook/i
+        :earthquake
       when /river flooded/i
         :flood
       when /celebrated/i
