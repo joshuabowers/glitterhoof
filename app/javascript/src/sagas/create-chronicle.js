@@ -10,7 +10,7 @@ const readAsText = blob => {
     const reader = new FileReader();
     reader.onload = () => resolve( reader.result );
     reader.onerror = reject;
-    reader.readAsText( blob );
+    reader.readAsText( blob, 'iso-8859-1' );
   });
 };
 
