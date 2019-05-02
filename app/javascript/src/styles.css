@@ -78,3 +78,22 @@ body {
 main {
   padding: 0 2em;
 }
+
+a {
+  --text-shadow-color: rgba( 64,64,64, 0.5 );
+  text-decoration: none;
+  color: slategray;
+
+  display: inline-block;
+
+  transition: all 300ms ease-in-out-circ;
+}
+
+a:hover {
+  transform: translateY(-0.1em) scale(1.05);
+  text-shadow: 0 0 3px silver, 0 0.2em 0.1em var(--text-shadow-color);
+}
+
+a:visited {
+  color: darkslategray;
+}
