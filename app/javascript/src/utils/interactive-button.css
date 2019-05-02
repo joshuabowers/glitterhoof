@@ -1,12 +1,11 @@
 .interactiveButton {
   background-color: transparent;
-  border: 0.1em solid transparent;
-  border-radius: 0.25em;
+  border: none;
   cursor: pointer;
 
   padding: 0.1em 0.25em;
 
-  transition: all 0.2s ease-in-out;
+  transition: all 300ms ease-in-out-circ;
 
   display: inline-flex;
   align-items: center;
@@ -17,8 +16,8 @@
 }
 
 .interactiveButton:hover:not(:disabled) {
-  transform: translateY( -0.1em ) scale(1.1, 1.1);
-  box-shadow: var(--box-shadow);
+  transform: translateY(-0.1em) scale(1.05);
+  text-shadow: 0 0 3px silver, 0 0.2em 0.1em var(--text-shadow-color);
 }
 
 .interactiveButton:active {
