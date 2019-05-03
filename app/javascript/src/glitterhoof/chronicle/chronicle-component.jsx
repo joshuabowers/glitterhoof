@@ -1,12 +1,13 @@
 import React from 'react';
 
+import Trianglify from '../trianglify';
 import Event from './event';
 import styles from './styles';
 
 const groupedEventList = groups => Object.entries( groups ).map(
   ([ year, events ]) => (
     <React.Fragment key={ year }>
-      <header><h3>{ year }</h3></header>
+      <header><Trianglify /><h3>{ year }</h3></header>
       {
         events.map(
           event => <Event key={ event.id } { ...event } />

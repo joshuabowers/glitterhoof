@@ -15,6 +15,7 @@
 
 .chronicle header {
   break-before: column;
+  position: relative;
 }
 
 .chronicle header > * {
